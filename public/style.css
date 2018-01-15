@@ -79,3 +79,9 @@ footer > a {
 .nicejob {
   text-decoration: line-through;
 }
+
+
+.app-status {
+  font-size: 0.8em;
+  color :green;
+}
