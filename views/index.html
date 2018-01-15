@@ -6,7 +6,7 @@
   <head>
     <title>Test technique - BioIntelligence Technologies inc.</title>
     <meta name="description" content="Test technique - BioIntelligence Technologies inc.">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <link id="favicon" rel="icon" href="https://biointelligence.com/wp-content/themes/bravad/assets/img/favicon.png" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,27 +17,86 @@
       <h1>
         Test technique - BioIntelligence Technologies inc.
       </h1>
+      <a href="#/instruction">Instruction</a>
     </header>
 
-    <main>
-      <p class="bold">Oh hi,</p>
-      <p>Tell me your hopes and dreams:</p>
-      <form>
-        <input type="text" maxlength="100" placeholder="Dreams!">
-        <button type="submit">Submit</button>
-      </form>
-      <section class="dreams">
-        <ul id="dreams">
-        </ul>
-      </section>
-    </main>
-
-    
+    <main id="root"></main>
+        
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js" integrity="sha256-0atoj6xVOJUoBM8Vp5PFywwLLE+aNl2svi4Q9UWZ+dQ=" crossorigin="anonymous"></script>
+    <script>
+      window.ns = {Backbone : window.Backbone}
+    </script>
+    <script src="/src/import.js"></script>
+    
+<script type="text/template" id="instruction">
+      <div>
+        <h2>Instruction</h2>
+        <p>
+          Le test consiste à créer une page "Pays" affichant une liste de nom de pays et de l'information supplémentaire sur un pays sélectionné.
+        </p>
+        <p>
+          Vous avez 2 jours pour compléter le test.
+        </p>
+        <p>
+          Veillez s.v.p nous indiquer le nombre d'heures utilisés pour l'implémentation.
+        </p>
+        <p>
+          Voici les requis fonctionnels à respecter.
+        </p>
+        <ol>
+          <li>
+            Je peux naviguer vers la page "Pays" et vers la page d'instruction.
+          </li>
+          <li>
+            Je peux sélectionner un pays à voir de l'informations supplémentaires à partir d'une liste affichant le nom
+            de tous les pays disponibles dans le système.
+          </li>
+          <li>
+            Je peux voir la date et l'heure de la dernière mise à jour  de la liste des pays.
+          </li>
+          <li>
+            Je peux manuellement déclancher une mise à jour de la liste des pays.
+          </li>
+        </ol>
+        <h3>Précisions d'implémentation du serveur</h3>
+        <ul>
+          <li>
+            Utilisez l'API <a href="https://restcountries.eu/">https://restcountries.eu/</a> comme source de données.
+          </li>
+          <li>
+            Le serveur doit exposer un API REST et avoir les données des pays en mémoire (dans une variable nommé 'countriesDB').
+          </li>
+          <li>
+            Les données des pays affichées dans la page "Pays" doivent provenir des données en mémoire du serveur et être servies par le endpoint '/pays' selon le format : 
+            <pre>
+              {
+                metadata : {
+                  nbTotal : 3, // nombre
+                  lastUpdate : '2018-01-15 14:04'  // date
+                },
+                data : [{...}, {...}, {...}] // liste des pays
+              }
+            </pre>
+          </li>
+          <li>
+            La mise à jour de la liste des pays est possible au endpoint '/refresh' via un 'POST' HTTP et retourner les informations suivantes.
+            <pre>
+              {
+                lastUpdate : '2018-01-15 14:04'  // date
+              }
+            </pre>
+          </li>          
+        </ul>
+        
+        <h3>Maquettes</h3>
+        <img src="https://cdn.glitch.com/2cb564c5-2e2f-4e19-ac2b-29f23afe4b2f%2Fmockup-1.png?1516026932485" alt="Mockup 1" width="1200px" height="auto"/>
+        <img src="https://cdn.glitch.com/2cb564c5-2e2f-4e19-ac2b-29f23afe4b2f%2Fmockup-2.png?1516026932612" alt="Mockup 1" width="1200px" height="auto"/>
+      </div>
+    </script>
   </body>
 </html>
